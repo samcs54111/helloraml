@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<flow name="mainFlow" doc:id="98476a68-8d0d-462d-bf38-7366a2e99576" >
+		<logger level="INFO" doc:name="Logger" doc:id="633c043b-78dd-4b01-8880-4990c3b4b62d" message="Process Start"/>
+		<ee:transform doc:name="Transform Message" doc:id="25b7994f-0564-45f7-bc35-0969b9b560d2" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+{
+  message: "Hello world"
+}]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+		<logger level="INFO" doc:name="Logger" doc:id="99217484-d211-4603-8189-1c85eb0f40ab" message="#[payload]"/>
+		<logger level="INFO" doc:name="Logger" doc:id="715ecd33-9ccf-4747-91bc-b1ea0cc9fe27" message="Process End"/>
+	</flow>
+</mule>
